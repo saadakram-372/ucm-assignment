@@ -1,5 +1,7 @@
 import React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
+
+// theme
 import spacing from "../../theme/spacing";
 
 type Props = {
@@ -12,6 +14,7 @@ export const ScreenLayout = ({ children }: Props) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     margin: spacing.mediumPlus,
   },
 });

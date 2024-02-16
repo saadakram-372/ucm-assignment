@@ -1,1 +1,1 @@
-import { MoviesListScreen } from "./screens/MoviesListScreen";
+export { MoviesListScreen } from "./screens/MoviesListScreen";
