@@ -1,6 +1,5 @@
 import React from "react";
 import { FlatList, View, Text, StyleSheet } from "react-native";
-import { ListRenderItem } from "react-native/types";
 
 import colors from "../../theme/colors";
 import spacing from "../../theme/spacing";
@@ -18,10 +17,10 @@ export function ListComponent<T>({
 }: Props<T>) {
   return (
     <FlatList
-      bounces={false}
+      bounces={true}
       data={data}
       renderItem={renderItem}
-      removeClippedSubviews={true}
+      removeClippedSubviews={false}
       showsVerticalScrollIndicator={false}
       keyExtractor={(item, index) => String(index)}
       ListEmptyComponent={() => (

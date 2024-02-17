@@ -1,7 +1,7 @@
-import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { APIResponseType } from "../../service/types";
-import { getList } from "../../service/fetchers";
 import { MoviesSerializedType } from "./types";
+import { getList } from "../../service/fetchers";
+import { APIResponseType } from "../../service/types";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
 type MoviesListFetchParamsType = {
   page: number;
