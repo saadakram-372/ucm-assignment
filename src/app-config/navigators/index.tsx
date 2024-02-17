@@ -8,6 +8,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { MovieDetailScreen } from "../../features/details";
 import { MoviesListScreen } from "../../features/home/screens/MoviesListScreen";
 import { MoviesSerializedType } from "../../features/home/types";
+import colors from "../../theme/colors";
 
 export type AllScreenParams = {
   movies: undefined;
@@ -18,7 +19,10 @@ const Stack = createStackNavigator<AllScreenParams>();
 
 const screenOptions = {
   gestureEnabled: false,
+  headerTransparent: true,
   cardOverlayEnabled: true,
+  headerBackTitleVisible: false,
+  headerTintColor: colors.white,
 };
 
 const AppNavigator = () => (
