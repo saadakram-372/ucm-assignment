@@ -5,7 +5,7 @@
  * @returns {object} response
  */
 
-import { Config } from "src/app-config/config";
+import { Config } from "../app-config/config";
 
 const options = {
   method: "GET",
@@ -16,6 +16,6 @@ const options = {
 };
 
 export const getList = async (endpoint: string) => {
-  const response = await fetch(`${Config.API_BASE_URL}${endpoint}`, options);
-  return await response;
+  const response = fetch(`${Config.API_BASE_URL}${endpoint}`, options);
+  return response;
 };
