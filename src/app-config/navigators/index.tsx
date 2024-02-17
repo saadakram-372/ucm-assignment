@@ -17,8 +17,6 @@ export type AllScreenParams = {
 const Stack = createStackNavigator<AllScreenParams>();
 
 const screenOptions = {
-  headerShown: false,
-  cardStyle: { backgroundColor: "transparent" },
   gestureEnabled: false,
   cardOverlayEnabled: true,
 };
@@ -26,8 +24,16 @@ const screenOptions = {
 const AppNavigator = () => (
   <NavigationContainer>
     <Stack.Navigator initialRouteName="movies" screenOptions={screenOptions}>
-      <Stack.Screen name="movies" component={MoviesListScreen} />
-      <Stack.Screen name="movieDetail" component={MovieDetailScreen} />
+      <Stack.Screen
+        name="movies"
+        component={MoviesListScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="movieDetail"
+        component={MovieDetailScreen}
+        options={{ title: "" }}
+      />
     </Stack.Navigator>
   </NavigationContainer>
 );

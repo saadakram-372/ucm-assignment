@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     opacity: 0.8,
     width: "100%",
     position: "absolute",
-    minHeight: SCREEN_HEIGHT * 0.6,
+    minHeight: SCREEN_HEIGHT * 0.7,
     backgroundColor: colors.black,
     borderTopLeftRadius: spacing.large,
     borderTopRightRadius: spacing.large,
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   bottomsheet: {
     bottom: 0,
     width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT * 0.6,
+    height: SCREEN_HEIGHT * 0.7,
     position: "absolute",
     paddingTop: spacing.mediumPlus,
   },
