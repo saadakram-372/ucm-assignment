@@ -11,15 +11,28 @@ import colors from "../../../theme/colors";
 import spacing from "../../../theme/spacing";
 import { MoviesSerializedType } from "../types";
 import { Config } from "../../../app-config/config";
+import { useNavigation } from "@react-navigation/native";
 
 type Props = {
   data: MoviesSerializedType;
+  navigation: any;
 };
 
-export function MovieListItem({ data }: Props) {
-  const { poster_path, title, release_date } = data;
+export function MovieListItem({
+  navigation,
+  data: { poster_path, title, release_date, ...other },
+}: Props) {
+  const onClick = () => {
+    navigation.navigate("movieDetail", {
+      poster_path,
+      title,
+      release_date,
+      ...other,
+    });
+  };
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onClick}>
       <ImageBackground
         resizeMode="stretch"
         imageStyle={styles.image}
