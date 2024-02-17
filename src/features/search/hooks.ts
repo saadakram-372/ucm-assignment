@@ -11,12 +11,10 @@ export const useSearch = ({
   title,
 }: SearchFetchParamsType): UseQueryResult<APIResponseType<any>> => {
   return useQuery({
-    queryKey: ["search"],
+    queryKey: ["search", title],
     queryFn: async () => {
       const data = await getList(
-        `search/movie?api_key=${Config.API_KEY}&query=${encodeURIComponent(
-          title
-        )}`
+        `search/movie?api_key=${Config.API_KEY}&query=${title}`
       );
 
       return data.json();

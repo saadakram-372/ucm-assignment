@@ -18,6 +18,8 @@ type Props = {
 export const Searchbox = ({ searchedText, setSearchedText }: Props) => {
   const { data, isLoading } = useSearch({ title: searchedText });
 
+  console.log(data);
+
   return (
     <View style={styles.container}>
       <TextInput
