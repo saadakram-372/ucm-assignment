@@ -38,7 +38,7 @@ export const MoviesListScreen = ({ navigation }: Props) => {
           renderItem={({ item }) => (
             <MovieListItem data={item} navigation={navigation} />
           )}
-          ListEmptyComponent={<ListEmptyMessage message="No data" />}
+          ListEmptyComponent={<ListEmptyMessage message="No movies found" />}
         />
       </>
     </ScreenLayout>
