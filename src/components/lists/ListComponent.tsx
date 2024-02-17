@@ -24,8 +24,8 @@ export function ListComponent<T>({
       showsVerticalScrollIndicator={false}
       keyExtractor={(item, index) => String(index)}
       ListEmptyComponent={() => (
-        <View style={styles.empty_list_text_view_style}>
-          <Text style={styles.text_style}>{ListEmptyComponent}</Text>
+        <View style={styles.emptyView}>
+          <Text style={styles.text}>{ListEmptyComponent}</Text>
         </View>
       )}
     />
@@ -33,15 +33,14 @@ export function ListComponent<T>({
 }
 
 const styles = StyleSheet.create({
-  text_style: {
+  text: {
     color: colors.darkBlue,
     fontSize: 20,
     fontWeight: "400",
     marginHorizontal: spacing.mediumPlus,
-    // marginTop: spacing.textMidScreen,
     textAlign: "center",
   },
-  empty_list_text_view_style: {
+  emptyView: {
     alignItems: "center",
   },
 });

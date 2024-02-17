@@ -9,19 +9,13 @@ type Props = {
 
 export function ListEmptyMessage({ message }: Props) {
   return (
-    <View style={styles.container}>
+    <View>
       <Text style={styles.title}>{message}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    marginHorizontal: spacing.mediumPlus,
-  },
   title: {
     textAlign: "center",
     marginBottom: spacing.tiny,

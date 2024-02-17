@@ -13,13 +13,15 @@ export const useMoviesList = ({
   language,
 }: MoviesListFetchParamsType): UseQueryResult<
   APIResponseType<MoviesSerializedType>
-> =>
-  useQuery({
-    queryKey: ["movies"],
+> => {
+  return useQuery({
+    queryKey: ["movies", page],
     queryFn: async () => {
       const data = await getList(
         `movie/popular?language=${language}&page=${page}`
       );
+
       return data.json();
     },
   });
+};

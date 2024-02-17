@@ -4,6 +4,7 @@ interface ConfigType {
   API_BASE_URL: string | undefined;
   BEARER_KEY: string | undefined;
   IMAGE_BASE_URL: string | undefined;
+  API_KEY: string | undefined;
 }
 
 export const Config: ConfigType = {
@@ -15,4 +16,7 @@ export const Config: ConfigType = {
 
   // base path for images
   IMAGE_BASE_URL: NativeConfig.IMAGE_BASE_URL,
+
+  // api key required for some APIs
+  API_KEY: NativeConfig.API_KEY,
 };
