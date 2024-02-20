@@ -28,9 +28,7 @@ export const MoviesListScreen = ({ navigation }: Props) => {
       <SearchboxWrapper>
         {(searchedData) => {
           const filteredSearch =
-            searchedData != null && searchedData.total_results !== 0
-              ? searchedData.results
-              : [];
+            searchedData != null ? searchedData.results : [];
 
           return isLoading ? (
             <ListLoadingSkeleton />
