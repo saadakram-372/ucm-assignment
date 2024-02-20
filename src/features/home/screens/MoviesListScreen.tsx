@@ -5,7 +5,7 @@ import { useMoviesList } from "../hooks";
 import { MovieListItem } from "../components";
 import { ListComponent, ListEmptyMessage } from "../../../components/lists";
 import { ScreenLayout } from "../../../components/screen-layout/ScreenLayout";
-import { Searchbox } from "../../../features/search/Searchbox";
+import { SearchboxWrapper } from "../../search/SearchboxWrapper";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { AllScreenParams } from "../../../app-config/navigators";
 import { PaginationComponent } from "../../../components/pagination";
@@ -23,38 +23,38 @@ export const MoviesListScreen = ({ navigation }: Props) => {
     language: "en-US",
   });
 
-  const [searchedText, setSearchText] = useState("");
-
   return (
     <ScreenLayout>
-      <>
-        {isLoading ? (
-          <ListLoadingSkeleton />
-        ) : movies != null ? (
-          <>
-            <Searchbox
-              searchedText={searchedText}
-              setSearchedText={setSearchText}
-            />
+      <SearchboxWrapper>
+        {(searchedData) => {
+          const filteredSearch =
+            searchedData != null && searchedData.total_results !== 0
+              ? searchedData.results
+              : [];
 
-            <ListComponent
-              data={movies.results}
-              renderItem={({ item }) => (
-                <MovieListItem data={item} navigation={navigation} />
-              )}
-              ListEmptyComponent={
-                <ListEmptyMessage message="No movies found" />
-              }
-            />
+          return isLoading ? (
+            <ListLoadingSkeleton />
+          ) : movies != null ? (
+            <>
+              <ListComponent
+                data={filteredSearch.length ? filteredSearch : movies.results}
+                renderItem={({ item }) => (
+                  <MovieListItem data={item} navigation={navigation} />
+                )}
+                ListEmptyComponent={
+                  <ListEmptyMessage message="No movies found" />
+                }
+              />
 
-            <PaginationComponent
-              currentPage={page}
-              setPageIndex={setPage}
-              lastPage={movies.total_pages}
-            />
-          </>
-        ) : null}
-      </>
+              <PaginationComponent
+                currentPage={page}
+                setPageIndex={setPage}
+                lastPage={movies.total_pages}
+              />
+            </>
+          ) : null;
+        }}
+      </SearchboxWrapper>
     </ScreenLayout>
   );
 };

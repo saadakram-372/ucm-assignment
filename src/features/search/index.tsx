@@ -1,0 +1,1 @@
+export { SearchboxWrapper } from "./SearchboxWrapper";
