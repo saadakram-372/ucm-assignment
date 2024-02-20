@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { View } from "react-native";
 
 import { useMoviesList } from "../hooks";
 import { MovieListItem } from "../components";
@@ -10,6 +9,7 @@ import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { AllScreenParams } from "../../../app-config/navigators";
 import { PaginationComponent } from "../../../components/pagination";
 import { ListLoadingSkeleton } from "../../../components/lists/ListLoadingSkeleton";
+import { ErrorComponent } from "../../../components/error-handling";
 
 type Props = {
   navigation: NativeStackNavigationProp<AllScreenParams>;
@@ -19,10 +19,32 @@ export const MoviesListScreen = ({ navigation }: Props) => {
   const [page, setPage] = useState(1);
   const [searchedText, setSearchText] = useState("");
 
-  const { data: movies, isLoading } = useMoviesList({
+  const {
+    data: movies,
+    isLoading,
+    isError,
+    error,
+    refetch,
+  } = useMoviesList({
     page,
     language: "en-US",
   });
+
+  if (isError) {
+    return (
+      <ScreenLayout>
+        <ErrorComponent refresh={refetch} message={error.message} />
+      </ScreenLayout>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <ScreenLayout>
+        <ListLoadingSkeleton />
+      </ScreenLayout>
+    );
+  }
 
   return (
     <ScreenLayout>
@@ -30,9 +52,7 @@ export const MoviesListScreen = ({ navigation }: Props) => {
         searchedText={searchedText}
         setSearchText={setSearchText}>
         {(searchedData) => {
-          return isLoading ? (
-            <ListLoadingSkeleton />
-          ) : movies != null ? (
+          return movies != null ? (
             <>
               <ListComponent
                 data={
