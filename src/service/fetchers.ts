@@ -16,6 +16,6 @@ const options = {
 };
 
 export const getList = async (endpoint: string) => {
-  const response = fetch(`${Config.API_BASE_URL}${endpoint}`, options);
-  return response;
+  const data = await fetch(`${Config.API_BASE_URL}${endpoint}`, options);
+  return data;
 };
