@@ -24,11 +24,10 @@ export const ListItem = ({ heading, content, showDivider = true }: Props) => {
         </Text>
       </View>
 
-      {/* Horizontal divider */}
       {showDivider ? (
         <HorizontalDivider
           width="95%"
-          height={2}
+          height={StyleSheet.hairlineWidth}
           backgroundColor={colors.silverChalice}
         />
       ) : null}

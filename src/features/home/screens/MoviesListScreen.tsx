@@ -9,6 +9,7 @@ import { Searchbox } from "../../../features/search/Searchbox";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { AllScreenParams } from "../../../app-config/navigators";
 import { PaginationComponent } from "../../../components/pagination";
+import { ListLoadingSkeleton } from "../../../components/lists/ListLoadingSkeleton";
 
 type Props = {
   navigation: NativeStackNavigationProp<AllScreenParams>;
@@ -24,31 +25,35 @@ export const MoviesListScreen = ({ navigation }: Props) => {
 
   const [searchedText, setSearchText] = useState("");
 
-  if (movies == null) {
-    return null;
-  }
-
   return (
     <ScreenLayout>
       <>
-        <Searchbox
-          searchedText={searchedText}
-          setSearchedText={setSearchText}
-        />
+        {isLoading ? (
+          <ListLoadingSkeleton />
+        ) : movies != null ? (
+          <>
+            <Searchbox
+              searchedText={searchedText}
+              setSearchedText={setSearchText}
+            />
 
-        <ListComponent
-          data={movies.results}
-          renderItem={({ item }) => (
-            <MovieListItem data={item} navigation={navigation} />
-          )}
-          ListEmptyComponent={<ListEmptyMessage message="No movies found" />}
-        />
+            <ListComponent
+              data={movies.results}
+              renderItem={({ item }) => (
+                <MovieListItem data={item} navigation={navigation} />
+              )}
+              ListEmptyComponent={
+                <ListEmptyMessage message="No movies found" />
+              }
+            />
 
-        <PaginationComponent
-          currentPage={page}
-          setPageIndex={setPage}
-          lastPage={movies.total_pages}
-        />
+            <PaginationComponent
+              currentPage={page}
+              setPageIndex={setPage}
+              lastPage={movies.total_pages}
+            />
+          </>
+        ) : null}
       </>
     </ScreenLayout>
   );

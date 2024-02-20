@@ -2,13 +2,10 @@ import React from "react";
 
 import { View, StyleSheet } from "react-native";
 
-// Constants
 import { TextInput } from "../../components/text-input/TextInput";
 import spacing from "../../theme/spacing";
 import colors from "../../theme/colors";
 import { useSearch } from "./hooks";
-
-// Components
 
 type Props = {
   searchedText: string;
@@ -16,9 +13,7 @@ type Props = {
 };
 
 export const Searchbox = ({ searchedText, setSearchedText }: Props) => {
-  const { data, isLoading } = useSearch({ title: searchedText });
-
-  console.log(data);
+  useSearch({ title: searchedText });
 
   return (
     <View style={styles.container}>
