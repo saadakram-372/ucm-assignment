@@ -9,7 +9,7 @@ type Props = {
   refresh?: () => void;
 };
 
-export function ErrorComponent({ message, refresh }: Props) {
+export const ErrorComponent = ({ message, refresh }: Props) => {
   return (
     <View style={styles.fill}>
       <Text>{message}</Text>
@@ -19,7 +19,7 @@ export function ErrorComponent({ message, refresh }: Props) {
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   fill: {

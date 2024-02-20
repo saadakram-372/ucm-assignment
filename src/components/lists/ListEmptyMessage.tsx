@@ -7,13 +7,13 @@ type Props = {
   message: string;
 };
 
-export function ListEmptyMessage({ message }: Props) {
+export const ListEmptyMessage = ({ message }: Props) => {
   return (
     <View>
       <Text style={styles.title}>{message}</Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   title: {

@@ -5,7 +5,6 @@ type Props = {
 };
 
 export const DataProvider = ({ children }: Props) => {
-  // Create a client
   const queryClient = new QueryClient();
 
   return (

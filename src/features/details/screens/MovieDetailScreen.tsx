@@ -7,7 +7,6 @@ import {
   View,
 } from "react-native";
 
-import { ScreenLayout } from "../../../components/screen-layout/ScreenLayout";
 import { NativeStackNavigationProp } from "react-native-screens/native-stack";
 import { RouteProp } from "@react-navigation/native";
 import { AllScreenParams } from "app-config/navigators";
@@ -19,10 +18,9 @@ import { ListItem } from "../components/ListItem";
 
 type Props = {
   route: RouteProp<AllScreenParams, "movieDetail">;
-  navigation: NativeStackNavigationProp<AllScreenParams>;
 };
 
-export const MovieDetailScreen = ({ navigation, route }: Props) => {
+export const MovieDetailScreen = ({ route }: Props) => {
   const {
     title,
     adult,

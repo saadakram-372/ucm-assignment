@@ -11,11 +11,12 @@ import colors from "../../../theme/colors";
 import spacing from "../../../theme/spacing";
 import { MoviesSerializedType } from "../types";
 import { Config } from "../../../app-config/config";
-import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "react-native-screens/native-stack";
+import { AllScreenParams } from "../../../app-config/navigators/index";
 
 type Props = {
   data: MoviesSerializedType;
-  navigation: any;
+  navigation: NativeStackNavigationProp<AllScreenParams>;
 };
 
 export function MovieListItem({
