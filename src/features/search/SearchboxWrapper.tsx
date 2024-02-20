@@ -7,12 +7,13 @@ import spacing from "../../theme/spacing";
 import colors from "../../theme/colors";
 import { useSearch } from "./hooks";
 import { APIResponseType } from "../../service/types";
+import { SearchSerializedType } from "./types";
 
 type Props = {
   searchedText: string;
   setSearchText: (text: string) => void;
   children: (
-    searchedData: APIResponseType<any> | undefined
+    searchedData: APIResponseType<SearchSerializedType> | undefined
   ) => JSX.Element | null;
 };
 

@@ -1,4 +1,4 @@
-export interface MoviesSerializedType {
+export interface SearchSerializedType {
   adult: boolean;
   backdrop_path: string;
   genre_ids: Array<string>;
