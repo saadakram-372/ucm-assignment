@@ -17,6 +17,7 @@ type Props = {
 
 export const MoviesListScreen = ({ navigation }: Props) => {
   const [page, setPage] = useState(1);
+  const [searchedText, setSearchText] = useState("");
 
   const { data: movies, isLoading } = useMoviesList({
     page,
@@ -25,16 +26,20 @@ export const MoviesListScreen = ({ navigation }: Props) => {
 
   return (
     <ScreenLayout>
-      <SearchboxWrapper>
+      <SearchboxWrapper
+        searchedText={searchedText}
+        setSearchText={setSearchText}>
         {(searchedData) => {
-          const filteredSearch = searchedData?.results ?? [];
-
           return isLoading ? (
             <ListLoadingSkeleton />
           ) : movies != null ? (
             <>
               <ListComponent
-                data={filteredSearch.length ? filteredSearch : movies.results}
+                data={
+                  searchedText != "" && searchedData != null
+                    ? searchedData.results
+                    : movies.results
+                }
                 renderItem={({ item }) => (
                   <MovieListItem data={item} navigation={navigation} />
                 )}
@@ -46,7 +51,11 @@ export const MoviesListScreen = ({ navigation }: Props) => {
               <PaginationComponent
                 currentPage={page}
                 setPageIndex={setPage}
-                lastPage={movies.total_pages}
+                lastPage={
+                  searchedText != "" && searchedData != null
+                    ? searchedData.total_pages
+                    : movies.total_pages
+                }
               />
             </>
           ) : null;

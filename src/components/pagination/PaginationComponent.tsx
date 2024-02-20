@@ -19,11 +19,11 @@ export const PaginationComponent = ({
     }
   };
 
-  return (
+  return currentPage < lastPage ? (
     <TouchableOpacity style={styles.button} onPress={loadMore}>
       <Text style={styles.text}>Load More</Text>
     </TouchableOpacity>
-  );
+  ) : null;
 };
 
 const styles = StyleSheet.create({

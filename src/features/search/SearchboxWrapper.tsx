@@ -9,14 +9,18 @@ import { useSearch } from "./hooks";
 import { APIResponseType } from "../../service/types";
 
 type Props = {
+  searchedText: string;
+  setSearchText: (text: string) => void;
   children: (
     searchedData: APIResponseType<any> | undefined
   ) => JSX.Element | null;
 };
 
-export const SearchboxWrapper = ({ children }: Props) => {
-  const [searchedText, setSearchText] = useState("");
-
+export const SearchboxWrapper = ({
+  children,
+  setSearchText,
+  searchedText,
+}: Props) => {
   const { data: searchedData } = useSearch({ title: searchedText });
 
   return (
